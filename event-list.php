@@ -48,30 +48,37 @@ unset($pdo);
     <?php include('includes/header.php'); ?> <!-- En-tête du site -->
 
     <div class="container">
-        <h2>FestiPlan</h2>
+        <h2>Liste des fêtes</h2>
         <div class="event-container">
-            <?php if (count($events) > 0) : ?>
-                <?php foreach ($events as $event) : ?>
+            <?php if (count($events) > 0): ?>
+                <?php foreach ($events as $event): ?>
                     <a href="event-details.php?id=<?php echo $event["id"]; ?>" class="event-card-link">
                         <div class="event-card">
                             <div class="top">
-                                <h3><?php echo htmlspecialchars($event["title"]); ?></h3>
+                                <h3>
+                                    <?php echo htmlspecialchars($event["title"]); ?>
+                                </h3>
                                 <div class="image-container"> <!-- Ajout d'un conteneur pour l'image -->
-                                    <?php if (!empty($event["image"])) : ?>
-                                        <img class="image-rect" src="data:image/jpeg;base64,<?php echo $event["image"]; ?>" alt="Image de l'événement">
-                                    <?php else : ?>
+                                    <?php if (!empty($event["image"])): ?>
+                                        <img class="image-rect" src="data:image/jpeg;base64,<?php echo $event["image"]; ?>"
+                                            alt="Image de l'événement">
+                                    <?php else: ?>
                                         <img src="/images/no-image.jpg" alt="Pas d'image disponible">
                                     <?php endif; ?>
                                 </div>
                             </div>
                             <div class="bottom">
-                                <p>Lieu: <?php echo htmlspecialchars($event["location"]); ?></p>
-                                <p>Date: <?php echo htmlspecialchars($event["event_date"]); ?></p>
+                                <p>Lieu:
+                                    <?php echo htmlspecialchars($event["location"]); ?>
+                                </p>
+                                <p>Date:
+                                    <?php echo htmlspecialchars($event["event_date"]); ?>
+                                </p>
                             </div>
                         </div>
                     </a>
                 <?php endforeach; ?>
-            <?php else : ?>
+            <?php else: ?>
                 <p>Aucun événement à afficher.</p>
             <?php endif; ?>
         </div>
