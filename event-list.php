@@ -48,7 +48,7 @@ unset($pdo);
     <?php include('includes/header.php'); ?> <!-- En-tête du site -->
 
     <div class="container">
-        <h2>Liste des fêes</h2>
+        <h2>Lise des fêtes</h2>
         <div class="event-container">
             <?php if (count($events) > 0): ?>
                 <?php foreach ($events as $event): ?>
