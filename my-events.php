@@ -23,7 +23,7 @@ if (isset($_GET["delete"]) && !empty(trim($_GET["delete"]))) {
         $stmt->bindParam(":user_id", $_SESSION["id"], PDO::PARAM_INT);
         $param_id = trim($_GET["delete"]);
 
-        // Exécuter la requête. En cas de succès, rediriger l'utilisateur vers la page de ses événements
+        // Exécuter la requête. En cas de succès, rediriger l'utilisateur vers la page de ses fêtes
         if ($stmt->execute()) {
             header("location: my-events.php");
             exit();
@@ -36,11 +36,11 @@ if (isset($_GET["delete"]) && !empty(trim($_GET["delete"]))) {
     unset($stmt);
 }
 
-// Récupérer les événements créés par l'utilisateur
+// Récupérer les fêtes créés par l'utilisateur
 $sql = "SELECT id, title, image FROM events WHERE user_id = :user_id";
 $events = [];
 
-// Préparer et exécuter la requête pour récupérer les événements
+// Préparer et exécuter la requête pour récupérer les fêtes
 if ($stmt = $pdo->prepare($sql)) {
     $stmt->bindParam(":user_id", $_SESSION["id"], PDO::PARAM_INT);
 
@@ -77,7 +77,7 @@ unset($pdo);
     <?php include('includes/header.php'); ?> <!-- En-tête du site -->
 
     <div class="container">
-        <h2>Mes Événements</h2>
+        <h2>Mes fêtes</h2>
         <div class="event-container">
             <?php if (count($events) > 0) : ?>
                 <?php foreach ($events as $event) : ?>
